@@ -4,13 +4,9 @@ import com.kisyki.common.BaseController;
 import com.kisyki.common.config.SiteConfig;
 import com.kisyki.exception.ApiException;
 import com.kisyki.exception.Result;
-import com.kisyki.module.collect.service.CollectService;
-import com.kisyki.module.reply.service.ReplyService;
-import com.kisyki.module.topic.service.TopicService;
 import com.kisyki.module.user.entity.User;
 import com.kisyki.module.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +27,6 @@ public class UserApiController extends BaseController {
     @Autowired
     private UserService userService;
     @Autowired
-    private TopicService topicService;
-    @Autowired
-    private ReplyService replyService;
-    @Autowired
-    private CollectService collectService;
-    @Autowired
     private SiteConfig siteConfig;
 
     /**
@@ -51,9 +41,6 @@ public class UserApiController extends BaseController {
         if (user == null) throw new ApiException("用户名不存在");
         Map<String, Object> map = new HashMap<>();
         map.put("user", user);
-        map.put("collectCount", collectService.countByUser(user));
-        map.put("topicPage", topicService.findByUser(1, 7, user));
-        map.put("replyPage", replyService.findByUser(1, 7, user));
         return Result.success(map);
     }
 
@@ -67,8 +54,9 @@ public class UserApiController extends BaseController {
     public Result topics(@PathVariable String username, Integer p) throws ApiException {
         User user = userService.findByUsername(username);
         if (user == null) throw new ApiException("用户名不存在");
-        Page page = topicService.findByUser(p == null ? 1 : p, siteConfig.getPageSize(), user);
-        return Result.success(page);
+//        Page page = topicService.findByUser(p == null ? 1 : p, siteConfig.getPageSize(), user);
+//        return Result.success(page);
+        return null;
     }
 
     /**
@@ -81,8 +69,9 @@ public class UserApiController extends BaseController {
     public Result replies(@PathVariable String username, Integer p) throws ApiException {
         User user = userService.findByUsername(username);
         if (user == null) throw new ApiException("用户名不存在");
-        Page page = replyService.findByUser(p == null ? 1 : p, siteConfig.getPageSize(), user);
-        return Result.success(page);
+//        Page page = replyService.findByUser(p == null ? 1 : p, siteConfig.getPageSize(), user);
+//        return Result.success(page);
+        return null;
     }
 
     /**
@@ -95,8 +84,9 @@ public class UserApiController extends BaseController {
     public Result collects(@PathVariable String username, Integer p) throws ApiException {
         User user = userService.findByUsername(username);
         if (user == null) throw new ApiException("用户名不存在");
-        Page page = collectService.findByUser(p == null ? 1 : p, siteConfig.getPageSize(), user);
-        return Result.success(page);
+//        Page page = collectService.findByUser(p == null ? 1 : p, siteConfig.getPageSize(), user);
+//        return Result.success(page);
+        return null;
     }
 
 }

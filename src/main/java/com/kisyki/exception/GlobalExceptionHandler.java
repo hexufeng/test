@@ -38,10 +38,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public ModelAndView defaultErrorHandler(HttpServletRequest request, Exception e) throws Exception {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("siteTitle", siteConfig.getName());
         mav.addObject("exception", e);
         mav.addObject("errorCode", getStatus(request));
-        mav.setViewName(siteConfig.getTheme() + "/error");
         return mav;
     }
 

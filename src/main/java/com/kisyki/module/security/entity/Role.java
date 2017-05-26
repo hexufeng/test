@@ -14,7 +14,7 @@ import java.util.Set;
  * http://www.kisyki.com
  */
 @Entity
-@Table(name = "pybbs_role")
+@Table(name = "t_role")
 public class Role extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = -8293845253380001671L;

@@ -18,7 +18,7 @@ import java.util.Set;
  * http://www.kisyki.com
  */
 @Entity
-@Table(name = "pybbs_user")
+@Table(name = "t_user")
 public class User extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 200796098159096559L;
@@ -36,18 +36,19 @@ public class User extends BaseEntity implements Serializable {
     @JsonIgnore
     private String password;
 
+    //个人签名
+    private String signature;
+
     //头像
     @Column(nullable = false)
     private String avatar;
 
-    //用户邮箱
-    private String email;
+    //用户手机号
+    @Column(nullable = false)
+    private String phone;
 
-    //个人签名
-    private String signature;
-
-    //个人主页
-    private String url;
+    //验证码
+    private String code;
 
     //注册时间
     @Column(nullable = false)
@@ -102,12 +103,20 @@ public class User extends BaseEntity implements Serializable {
         this.avatar = avatar;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getSignature() {
@@ -116,14 +125,6 @@ public class User extends BaseEntity implements Serializable {
 
     public void setSignature(String signature) {
         this.signature = signature;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public Date getInTime() {

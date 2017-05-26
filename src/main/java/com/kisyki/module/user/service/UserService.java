@@ -1,9 +1,5 @@
 package com.kisyki.module.user.service;
 
-import com.kisyki.module.collect.service.CollectService;
-import com.kisyki.module.notification.service.NotificationService;
-import com.kisyki.module.reply.service.ReplyService;
-import com.kisyki.module.topic.service.TopicService;
 import com.kisyki.module.user.dao.UserDao;
 import com.kisyki.module.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +21,6 @@ public class UserService {
 
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private TopicService topicService;
-    @Autowired
-    private ReplyService replyService;
-    @Autowired
-    private NotificationService notificationService;
-    @Autowired
-    private CollectService collectService;
 
     public User findById(int id) {
         return userDao.findOne(id);

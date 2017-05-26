@@ -130,9 +130,7 @@ public class UserController extends BaseController {
     public String updateUserInfo(String email, String url, String signature, @RequestParam("avatar") MultipartFile avatar, HttpServletResponse response) throws IOException {
         User user = getUser();
         if(user.isBlock()) return null;
-        user.setEmail(email);
         user.setSignature(signature);
-        user.setUrl(url);
         String requestUrl = fileUtil.uploadFile(avatar, FileUploadEnum.AVATAR);
         if (!StringUtils.isEmpty(requestUrl)) {
             user.setAvatar(requestUrl);

@@ -38,11 +38,11 @@ public class FileUtil {
             BufferedOutputStream stream = null;
             String requestPath = null;
             if (fileUploadEnum == FileUploadEnum.FILE) {
-                stream = new BufferedOutputStream(new FileOutputStream(new File(siteConfig.getUploadPath() + fileName)));
-                requestPath = siteConfig.getStaticUrl();
+                stream = new BufferedOutputStream(new FileOutputStream(new File("/opt/upload/file/" + fileName)));
+                requestPath = "/opt/upload/file/";
             } else if (fileUploadEnum == FileUploadEnum.AVATAR) {
-                stream = new BufferedOutputStream(new FileOutputStream(new File(siteConfig.getUploadPath() + "avatar/" + fileName)));
-                requestPath = siteConfig.getStaticUrl() + "avatar/";
+                stream = new BufferedOutputStream(new FileOutputStream(new File("/opt/upload/" + "avatar/" + fileName)));
+                requestPath = "/opt/upload/file/" + "avatar/";
             }
             if (stream != null) {
                 stream.write(file.getBytes());

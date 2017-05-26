@@ -13,7 +13,7 @@ import java.util.Set;
  * http://www.kisyki.com
  */
 @Entity
-@Table(name = "pybbs_permission")
+@Table(name = "t_permission")
 public class Permission extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 8168491333970695934L;
